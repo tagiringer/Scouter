@@ -1,0 +1,18 @@
+tournament_dict
+{
+    TournamentId:string
+    TournamentName:string
+    TournamentSection:string
+    BeforeStandardRating:string
+    AfterStandardRating:string
+    BeforeQuickRating:string
+    AfterQuickRating:string
+}
+
+rating_info
+{
+        "id":string
+        "name":string
+        "standard":string
+        "quick":string
+}

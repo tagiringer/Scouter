@@ -28,7 +28,7 @@
         <input class="btn btn-primary" type="submit" value="Submit" />
     </form>
     
-    <table class="table table-striped">
+    <table id="ratingTable" class="table table-striped" style='visibility: collapse;'>
         <tr>
             <th>USCF ID</th>            
             <th>Regular Rating</th>
@@ -43,6 +43,25 @@
             <td> {{quick}} </td>
         </tr>
         
+        <table id="tournamentTable" class="table table-striped" style='visibility: collapse;'>
+            <tr>
+                <th>Tournament ID</th>
+                <th>Tournament Name</th>
+                <th>Section</th>
+                <th>Regular Rating</th>
+                <th>Quick Rating</th>
+            </tr>
+            
+
+            {% for key in tournament_data %}            
+            <tr>
+                {% for section in tournament_data[key] %}
+                <td>{{tournament_data[key][section]}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+
     </table>
     
     <a href="\" class="btn btn-danger">Return to Welcome</a>
@@ -54,7 +73,26 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
-  
+        <script>
+
+            rt = document.getElementById("ratingTable");
+            tt = document.getElementById("tournamentTable")
+
+            let rcount = rt.rows.length;
+            let tcount = tt.rows.length;
+
+            console.log(rcount);
+            console.log(tcount);
+
+            console.log(tt.rows[0])
+            console.log(tt.rows[1])
+
+            if(typeof tt.rows[1] != 'undefined'){
+                rt.style.visibility = 'visible';
+                tt.style.visibility = 'visible';
+            }
+
+        </script>
     
 
 </body>

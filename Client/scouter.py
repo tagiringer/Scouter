@@ -15,15 +15,25 @@ def scouter():
 @app.route("/player", methods=['GET', 'POST'])
 def player():
     if request.method == 'POST':
-        rating = request.form['uscf']
-        user_rating_dict = get_rating_profile(rating)
+        selected_id = request.form['uscf']
+        user_rating_dict = get_rating_profile(selected_id)
+
+        user_tournament_dict = get_tournament_history(selected_id)
+        
+        for t in user_tournament_dict:
+            del user_tournament_dict[t]['BeforeStandardRating']
+            del user_tournament_dict[t]['BeforeQuickRating']
+
+
+        
+        
 
         player_id = user_rating_dict['id']
         player_name = user_rating_dict['name']
         player_standard = user_rating_dict['standard']
         player_quick = user_rating_dict['quick']
 
-        return render_template('player_lookup.html', uscf_id = player_id, name = player_name, standard = player_standard, quick = player_quick, data = user_rating_dict)
+        return render_template('player_lookup.html', uscf_id = player_id, name = player_name, standard = player_standard, quick = player_quick, tournament_data = user_tournament_dict)
     else:
         return render_template('player_lookup.html')
 

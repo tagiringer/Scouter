@@ -118,10 +118,10 @@ def get_tournament_history(uscf_id):
 
     master_tournament_dict = clean_tournaments(raw_tournament_dict)
 
-    print(master_tournament_dict)
+    #print(master_tournament_dict)
     
 
-    #return master_tournament_dict
+    return master_tournament_dict
     
 
 def get_rating_profile(uscf_id):
