@@ -10,6 +10,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def scouter():
+    graph_tournaments()
+
     return(render_template('index.html'))
 
 @app.route("/player_search", methods=['GET', 'POST'])

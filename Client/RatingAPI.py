@@ -1,6 +1,9 @@
+from plotly import express as px
 from bs4 import BeautifulSoup
 import requests
 import re
+
+#------- Helper Methods
 
 def trunc(input_string):
     val_ind = input_string.index('value=')
@@ -79,7 +82,13 @@ def clean_tournaments(tournament_dict):
 
     return new_tournament_dict
 
+def graph_tournaments():
+    df = px.data.gapminder().query("country=='Country'")
+    fig = px.line(df, x="year", y="lifeExp", title='Life expectancy in Canada')
+    fig.show()
 
+
+#------- USCF Retrieval Methods
 
 def get_tournament_history(uscf_id):
 
