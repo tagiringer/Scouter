@@ -154,8 +154,35 @@ def get_member_results(member_query_string):
     doc = BeautifulSoup(r.text, "html.parser")
 
     res_strings = doc.findAll('pre')
+    extract = res_strings.pop()
+    rawMembers = extract.text.split('\n')
 
-    print(str(res_strings))
+    members = []
+    for member in rawMembers:
+        uscfID = member.split(' ')[0]
+        if uscfID.isdigit():
+            members.append(member)
+
+    dic = {}
+    for member in members:
+        memberDetails = member.split(' ')
+        uscf_id = memberDetails.pop(0)
+        dic.update({uscf_id: memberDetails})
+
+
+    print(dic)
+
+    
+
+
+
+        
+        
+
+
+
+
+
 
 
 #uscf_id = '11292097'
