@@ -146,6 +146,16 @@ def get_rating_profile(uscf_id):
 
     return rating_info
 
+def get_member_results(member_query_string):
+    
+    url = 'https://www.uschess.org/assets/msa_joomla/MbrLst.php'
+
+    r = requests.post(url, data={'eMbrKey':member_query_string})
+    doc = BeautifulSoup(r.text, "html.parser")
+
+    res_strings = doc.findAll('pre')
+
+    print(str(res_strings))
 
 
 #uscf_id = '11292097'

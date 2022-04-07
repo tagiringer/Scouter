@@ -12,6 +12,22 @@ app = Flask(__name__)
 def scouter():
     return(render_template('index.html'))
 
+@app.route("/player_search", methods=['GET', 'POST'])
+def player_search():
+    if request.method == 'POST':
+        firstname = request.form['fname']
+        lastname = request.form['lname']
+
+        modified_player_string = '{},{}'.format(lastname, firstname)
+
+        get_member_results(modified_player_string)
+
+        #print(firstname, lastname)
+        return(render_template('player_search.html'))
+
+    else:
+        return(render_template('player_search.html'))
+
 @app.route("/player", methods=['GET', 'POST'])
 def player():
     if request.method == 'POST':
