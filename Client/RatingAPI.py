@@ -169,8 +169,8 @@ def get_member_results(member_query_string):
         uscf_id = memberDetails.pop(0)
         dic.update({uscf_id: memberDetails})
 
-
     print(dic)
+    return dic
 
     
 
