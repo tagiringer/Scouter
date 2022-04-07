@@ -4,7 +4,7 @@ from RatingAPI import *
 #from requests import request
  
 app = Flask(__name__)
-
+PORT = 5000
 
 
 
@@ -58,4 +58,4 @@ def player():
 
 
 if(__name__=="__main__"):
-    app.run()
+    app.run(host='127.0.0.1', port=PORT)
